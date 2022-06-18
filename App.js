@@ -1,10 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import Constants from "expo-constants";
 import { Video, ResizeMode } from "expo-av";
 
 const sourceUrls = [
   "https://tantra-app-bucket.s3.eu-central-1.amazonaws.com/15936669715030.0_Intro.mp4",
+  {
+    uri: "https://tantra-app-bucket.s3.eu-central-1.amazonaws.com/15936669715030.0_Intro.mp4",
+    overrideFileExtensionAndroid: "mp4",
+  },
   "https://d3w2cdkkkvjjfr.cloudfront.net/1601392561415_Zen_Loss_2_Fear_of_loss.mp4",
   "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8",
   "https://media.graphcms.com/jyLnBuPTOaiOgZxP0fR3",
@@ -22,6 +26,7 @@ const sourceUrls = [
 export default function App() {
   const [urlIdx, seturlIdx] = useState(0);
   const uri = sourceUrls[urlIdx];
+  console.log(uri);
   return (
     <View style={styles.container}>
       <Video
